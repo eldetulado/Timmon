@@ -7,15 +7,16 @@
 
     <TextView
         android:id="@+id/title_sign_in"
-        android:text="Ingresar"
+        android:text="@string/sign_in"
         android:textAppearance="@android:style/TextAppearance.Material.DialogWindowTitle"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/email"
-        android:hint="Correo"
+        android:hint="@string/text_email_user"
         android:layout_below="@id/title_sign_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +25,7 @@
 
     <EditText
         android:id="@+id/password"
-        android:hint="Contraseña"
+        android:hint="@string/text_password"
         android:layout_below="@id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
