@@ -4,10 +4,19 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.oso.timmon.data.model.LoginR;
+import com.example.oso.timmon.data.remote.APIService;
+import com.example.oso.timmon.data.remote.ApiUtils;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.show();
     }
+    private APIService mAPIService;
 
     public void signIn(View view) {
 //        Ingresar
@@ -60,13 +70,45 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("listo", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
+                mAPIService = ApiUtils.getAPIService();
+                sendPost(correo.getText().toString().trim(), password.getText().toString().trim());
                 Toast.makeText(MainActivity.this,
-                                correo.getText().toString()+
+                        correo.getText().toString()+
                                 password.getText().toString(),
                         Toast.LENGTH_SHORT).show();
             }
         });
         builder.show();
+    }
+
+
+    public void sendPost(String correo, String password) {
+        mAPIService.savePost(correo, password).enqueue(new Callback<LoginR>() {
+            @Override
+            public void onResponse(Call<LoginR> call, Response<LoginR> response) {
+                Toast.makeText(MainActivity.this,
+                        response.code()+"".toString(),
+                        Toast.LENGTH_SHORT).show();
+                if(response.isSuccessful()) {
+                    showResponse(response.body().toString());
+                    Toast.makeText(MainActivity.this,
+                            response.body().toString(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginR> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void showResponse(String response) {
+        Toast.makeText(MainActivity.this,
+                response,
+                Toast.LENGTH_SHORT).show();
     }
 
 }
