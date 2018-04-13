@@ -5,7 +5,7 @@
     <string name="text_password">Contraseña</string>
     <string name="text_email_user">Correo o Usuario</string>
     <string name="user_name_lastname">Nombre Completo</string>
-    <string name="user_nick">Usuario</string>
+    <string name="user_nick">Nombre de usuario</string>
     <string name="email">Correo</string>
     <string name="bg_img">fondo</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed.</string>
