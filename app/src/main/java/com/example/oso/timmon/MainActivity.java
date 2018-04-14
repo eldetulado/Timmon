@@ -13,13 +13,21 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.oso.timmon.data.model.DataLoginXR;
+import com.example.oso.timmon.data.model.LoginE;
 import com.example.oso.timmon.data.model.LoginR;
 import com.example.oso.timmon.data.remote.APIService;
 import com.example.oso.timmon.data.remote.ApiUtils;
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.POST;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button registro = findViewById(R.id.btnRegistro);
         Button ingresar = findViewById(R.id.btnIngresar);
+        mAPIService = ApiUtils.getAPIService();
 
         registro.setOnClickListener(this);
         ingresar.setOnClickListener(this);
@@ -64,6 +73,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             nick.getText().toString() + "-" +
                             correo.getText().toString() + "-" +
                             password.getText().toString();
+                    sendPost(correo.getText().toString(), password.getText().toString());
+                    Toast.makeText(MainActivity.this,
+                            correo.getText().toString()+
+                                    password.getText().toString(),
+                            Toast.LENGTH_SHORT).show();
                     Toast.makeText(MainActivity.this, datos, Toast.LENGTH_SHORT).show();
                     alert.dismiss();
                     sw = true;
@@ -161,24 +175,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    public void sendPost(String correo, String password) {
-        mAPIService.savePost(correo, password).enqueue(new Callback<LoginR>() {
+    public void sendPost(String username, String password) {
+        LoginE a=new LoginE(username,password);
+        Call<LoginR> responseCall = mAPIService.hacerLlamada(a);
+
+        responseCall.enqueue(new Callback<LoginR>() {
             @Override
             public void onResponse(Call<LoginR> call, Response<LoginR> response) {
                 Toast.makeText(MainActivity.this,
-                        response.code()+"".toString(),
+                        response.code()+"",
                         Toast.LENGTH_SHORT).show();
                 if(response.isSuccessful()) {
                     showResponse(response.body().toString());
                     Toast.makeText(MainActivity.this,
-                            response.body().toString(),
+                            response.body().getMessage(),
                             Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<LoginR> call, Throwable t) {
-
+                Log.d("MainActivity", "error loading from API");
             }
         });
     }
@@ -188,5 +205,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 response,
                 Toast.LENGTH_SHORT).show();
     }
+
+
+
+/*
+    private void loadJSON(){
+        Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                .create();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://pokeapi.co/api/v2/")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        APIService restClient = retrofit.create(APIService.class);
+        Call<LoginR> call = restClient.getData();
+
+        call.enqueue(new Callback<LoginR>() {
+            @Override
+            public void onResponse(Call<LoginR> call, Response<LoginR> response) {
+                switch (response.code()) {
+                    case 200:
+                        LoginR data = response.body();
+                        break;
+                    case 401:
+
+                        break;
+                    default:
+
+                        break;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginR> call, Throwable t) {
+                Log.e("error", t.toString());
+            }
+        });
+    }
+*/
 
 }

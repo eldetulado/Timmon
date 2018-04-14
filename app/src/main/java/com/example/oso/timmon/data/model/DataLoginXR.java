@@ -1,8 +1,8 @@
 
-        package com.example.oso.timmon.data.model;
+package com.example.oso.timmon.data.model;
 
-                import com.google.gson.annotations.Expose;
-                import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class DataLoginXR {
     @Override
