@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Timmon</string>
-    <string name="sign_up">Registrarse</string>
-    <string name="sign_in">Ingresar</string>
+    <string name="app_name">Timón</string>
+    <string name="sign_up">Registrate</string>
+    <string name="sign_in">Ingresa</string>
     <string name="text_password">Contraseña</string>
     <string name="text_email_user">Correo o Usuario</string>
     <string name="user_name_lastname">Nombre Completo</string>
