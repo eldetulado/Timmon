@@ -95,5 +95,5 @@
         android:background="@drawable/bg_btn_sign_up"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:src="@drawable/ic_check_white_24dp" />
+        android:src="@drawable/ic_check_black_24dp" />
 </LinearLayout>

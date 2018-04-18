@@ -1,5 +1,6 @@
 package com.example.oso.timmon;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.support.design.widget.TextInputLayout;
@@ -7,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +33,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.POST;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
     private Boolean sw = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.setView(mView);
         builder.setCancelable(false);
         final AlertDialog alert = builder.create();
+        alert.setCanceledOnTouchOutside(true);
         alert.show();
+
+        /*alert.setOnKeyListener(new Dialog.OnKeyListener() {
+
+            @Override
+            public boolean onKey(DialogInterface arg0, int keyCode,
+                                 KeyEvent event) {
+                // TODO Auto-generated method stub
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    alert.dismiss();
+                    Toast.makeText(MainActivity.this, "es el registro", Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            }
+        });*/
+
+
 
         final TextInputLayout tInputNombre = mView.findViewById(R.id.tilNombre);
         final TextInputLayout tInputNick = mView.findViewById(R.id.tilNick);
@@ -116,14 +134,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (id){
             case R.id.btnRegistro :
                 if (sw) {
-                    sw = false;
+                    //sw = false;
                     registroDialogo();
                 }
                 break;
 
             case R.id.btnIngresar:
                 if (sw){
-                    sw = false;
+                    //sw = false;
                     ingresarDialogo();
                 }
                 break;
@@ -138,7 +156,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.setView(mView);
         builder.setCancelable(false);
         final AlertDialog alert = builder.create();
+        alert.setCanceledOnTouchOutside(true);
         alert.show();
+        /*alert.setOnKeyListener(new Dialog.OnKeyListener() {
+
+            @Override
+            public boolean onKey(DialogInterface arg0, int keyCode,
+                                 KeyEvent event) {
+                // TODO Auto-generated method stub
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    alert.dismiss();
+                    Toast.makeText(MainActivity.this, "es el registro", Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            }
+        });*/
         final TextInputLayout tNickCorreo = mView.findViewById(R.id.tilNickCorreo);
         final TextInputLayout tPassword = mView.findViewById(R.id.tilPassword);
         final EditText nickCorreo = mView.findViewById(R.id.nickCorreo);
