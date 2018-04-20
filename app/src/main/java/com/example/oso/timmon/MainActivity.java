@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         alert.setCanceledOnTouchOutside(true);
         alert.show();
 
-        /*alert.setOnKeyListener(new Dialog.OnKeyListener() {
+        alert.setOnKeyListener(new Dialog.OnKeyListener() {
 
             @Override
             public boolean onKey(DialogInterface arg0, int keyCode,
@@ -65,11 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // TODO Auto-generated method stub
                 if (keyCode == KeyEvent.KEYCODE_BACK) {
                     alert.dismiss();
-                    Toast.makeText(MainActivity.this, "es el registro", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
-        });*/
+        });
 
 
 
@@ -158,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final AlertDialog alert = builder.create();
         alert.setCanceledOnTouchOutside(true);
         alert.show();
-        /*alert.setOnKeyListener(new Dialog.OnKeyListener() {
+        alert.setOnKeyListener(new Dialog.OnKeyListener() {
 
             @Override
             public boolean onKey(DialogInterface arg0, int keyCode,
@@ -166,11 +165,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // TODO Auto-generated method stub
                 if (keyCode == KeyEvent.KEYCODE_BACK) {
                     alert.dismiss();
-                    Toast.makeText(MainActivity.this, "es el registro", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
-        });*/
+        });
         final TextInputLayout tNickCorreo = mView.findViewById(R.id.tilNickCorreo);
         final TextInputLayout tPassword = mView.findViewById(R.id.tilPassword);
         final EditText nickCorreo = mView.findViewById(R.id.nickCorreo);
