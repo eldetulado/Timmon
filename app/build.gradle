@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.oso.timmon"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -30,4 +30,5 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
     implementation 'com.android.support:design:27.1.1'
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+    implementation 'com.airbnb.android:lottie:2.5.1'
 }

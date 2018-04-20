@@ -8,5 +8,5 @@
     <string name="user_nick">Nombre de usuario</string>
     <string name="email">Correo</string>
     <string name="bg_img">fondo</string>
-    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed.</string>
+    <string name="lorem">Lorem ipsum dolor sit amet consts</string>
 </resources>

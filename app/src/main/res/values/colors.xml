@@ -4,6 +4,6 @@
     <color name="colorSecondary">#83FFE6</color>
     <color name="colorPrimaryDark">#2C2C2C</color>
     <color name="colorAccent">#2C2C2C</color>
-    <color name="colorStatusBar">#FF5F5F</color>
+    <color name="colorStatusBar">#fff</color>
     <color name="colorGray">#8c8c8c</color>
 </resources>

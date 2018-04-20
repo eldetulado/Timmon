@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.oso.timmon.data.model.DataLoginXR;
 import com.example.oso.timmon.data.model.LoginE;
 import com.example.oso.timmon.data.model.LoginR;
@@ -34,11 +35,17 @@ import retrofit2.http.POST;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Boolean sw = true;
+    private LottieAnimationView animationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+        animationView = (LottieAnimationView) findViewById(R.id.animation_view);
+        animationView.playAnimation();
+        animationView.setRepeatCount(0);
         Button registro = findViewById(R.id.btnRegistro);
         Button ingresar = findViewById(R.id.btnIngresar);
         mAPIService = ApiUtils.getAPIService();
