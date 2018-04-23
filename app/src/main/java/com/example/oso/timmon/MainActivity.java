@@ -79,11 +79,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-        final TextInputLayout tInputNombre = mView.findViewById(R.id.tilNombre);
+        //final TextInputLayout tInputNombre = mView.findViewById(R.id.tilNombre);
         final TextInputLayout tInputNick = mView.findViewById(R.id.tilNick);
         final TextInputLayout tInputCorreo = mView.findViewById(R.id.tilCorreo);
         final TextInputLayout tInputPassword = mView.findViewById(R.id.tilPassword);
-        final EditText nombreCompleto = mView.findViewById(R.id.names);
+        //final EditText nombreCompleto = mView.findViewById(R.id.names);
         final EditText nick = mView.findViewById(R.id.user_name);
         final EditText correo = mView.findViewById(R.id.email);
         final EditText password = mView.findViewById(R.id.password);
@@ -92,10 +92,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validarRegistro(tInputNombre, tInputNick,tInputCorreo,tInputPassword,
-                        nombreCompleto,nick,correo,password)) {
-                    String datos = nombreCompleto.getText().toString() + "-" +
-                            nick.getText().toString() + "-" +
+                if (validarRegistro(tInputNick,tInputCorreo,tInputPassword,nick,correo,password)) {
+                    String datos = nick.getText().toString() + "-" +
                             correo.getText().toString() + "-" +
                             password.getText().toString();
                     sendPost(correo.getText().toString(), password.getText().toString());
@@ -111,14 +109,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    private boolean validarRegistro(TextInputLayout tInputNombre, TextInputLayout tInputNick,
+    private boolean validarRegistro( TextInputLayout tInputNick,
                                     TextInputLayout tInputCorreo, TextInputLayout tInputPassword,
-                                    EditText nombreCompleto, EditText nick, EditText correo,
+                                     EditText nick, EditText correo,
                                     EditText password) {
-        if (nombreCompleto.getText().toString().trim().isEmpty()){
+        /*if (nombreCompleto.getText().toString().trim().isEmpty()){
             tInputNombre.setError("Falta rellenar campo");
             return false;
-        }
+        }*/
         if (nick.getText().toString().trim().isEmpty()){
             tInputNick.setError("Falta rellenar campo");
             return false;

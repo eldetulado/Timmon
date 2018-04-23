@@ -7,7 +7,8 @@
     android:paddingBottom="10dp"
     android:paddingEnd="20dp"
     android:paddingStart="20dp"
-    android:paddingTop="20dp">
+    android:paddingTop="10dp"
+    android:focusableInTouchMode="true">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/tilNickCorreo"
@@ -22,6 +23,7 @@
             android:drawableStart="@drawable/ic_account_box_black_24dp"
             android:hint="@string/text_email_user"
             android:inputType="textCapWords"
+            android:editable="true"
             android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 
@@ -47,8 +49,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/bg_btn_sign_in"
         android:paddingBottom="10dp"
