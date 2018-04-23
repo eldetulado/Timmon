@@ -2,6 +2,7 @@ package com.example.oso.timmon;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
@@ -226,6 +227,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(MainActivity.this,
                             response.body().getMessage(),
                             Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(MainActivity.this, TimeActivity.class);
+                    startActivity(i);
+                    finish();
                 }
             }
 
