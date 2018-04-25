@@ -1,57 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:orientation="vertical"
+android:paddingTop="10dp"
+
+android:background="@drawable/bg_alert"
+android:focusableInTouchMode="true">
+
+
+
+
+<android.support.design.widget.TextInputLayout
+    android:id="@+id/tilNickCorreo"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingBottom="10dp"
-    android:paddingEnd="20dp"
-    android:paddingStart="20dp"
-    android:paddingTop="10dp"
-    android:focusableInTouchMode="true">
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/tilNickCorreo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/nickCorreo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawablePadding="5dp"
-            android:drawableStart="@drawable/ic_account_box_black_24dp"
-            android:hint="@string/text_email_user"
-            android:inputType="textCapWords"
-            android:editable="true"
-            android:maxLines="1" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/tilPassword"
+    <EditText
+        android:id="@+id/nickCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true">
+        android:drawablePadding="15dp"
+        android:drawableStart="@drawable/ic_account_box_black_24dp"
+        android:hint="@string/text_email_user"
+        android:inputType="textCapWords"
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawablePadding="5dp"
-            android:drawableStart="@drawable/ic_https_black_24dp"
-            android:hint="@string/text_password"
-            android:inputType="textPassword"
-            android:maxLines="1" />
-    </android.support.design.widget.TextInputLayout>
+        android:fontFamily="@font/opensanslight"
+        android:paddingBottom="20dp"
+        android:maxLines="1" />
+</android.support.design.widget.TextInputLayout>
 
-    <ImageButton
-        android:id="@+id/btnDialogIngresar"
+<android.support.design.widget.TextInputLayout
+    android:id="@+id/tilPassword"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp">
+
+    <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/bg_btn_sign_in"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:src="@drawable/ic_check_white_24dp" />
+        android:drawablePadding="15dp"
+        android:drawableStart="@drawable/ic_https_black_24dp"
+        android:elegantTextHeight="false"
+
+        android:fontFamily="@font/opensanslight"
+        android:hint="@string/text_password"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:paddingBottom="40dp"/>
+</android.support.design.widget.TextInputLayout>
+
+<ImageButton
+    android:id="@+id/btnDialogIngresar"
+
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="-10dp"
+    android:background="@color/colorSecondary"
+    android:src="@drawable/ic_check_black_24dp" />
 </LinearLayout>

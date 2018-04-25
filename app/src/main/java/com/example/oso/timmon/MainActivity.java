@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (keyCode == KeyEvent.KEYCODE_BACK) {
                     alert.dismiss();
                 }
-                return true;
+                return false;
             }
         });
 
@@ -172,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (keyCode == KeyEvent.KEYCODE_BACK) {
                     alert.dismiss();
                 }
-                return true;
+                return false;
             }
         });
         final TextInputLayout tNickCorreo = mView.findViewById(R.id.tilNickCorreo);

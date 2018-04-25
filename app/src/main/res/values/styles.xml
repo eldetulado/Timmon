@@ -15,5 +15,8 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
+    <style name="alert">
+        <item name="android:background">@drawable/bg_alert</item>
+    </style>
 
 </resources>

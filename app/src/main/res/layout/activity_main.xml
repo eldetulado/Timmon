@@ -41,7 +41,6 @@
         android:textAppearance="@android:style/TextAppearance.Material.Subhead"
         android:layout_below="@id/text_title"/>
 
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_view"
         android:layout_width="250dp"
