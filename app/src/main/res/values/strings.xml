@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Timón</string>
+    <string name="app_name">Timon</string>
     <string name="sign_up">Registrate</string>
     <string name="sign_in">Ingresa</string>
     <string name="text_password">Contraseña</string>
@@ -9,4 +9,10 @@
     <string name="email">Correo</string>
     <string name="bg_img">fondo</string>
     <string name="lorem">Lorem ipsum dolor sit amet consts</string>
+
+    <string-array name="options">
+        <item>Mensual</item>
+        <item>Hoy</item>
+        <item>Semanal</item>
+    </string-array>
 </resources>

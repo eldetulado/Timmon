@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/btn_play_pause_item"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:src="@drawable/ic_play_circle" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="4"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nombre_actividad_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/opensans"
+            android:text="Estudiar Mongo"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tiempo_ultima_vez_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/opensanslight"
+            android:text="Ultima vez hace un dia"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/icon_rutina_item"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:src="@drawable/ic_account_box_black_24dp" />
+
+    <TextView
+        android:id="@+id/tiempo_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fontFamily="@font/opensans"
+        android:gravity="center"
+        android:text="25:00"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/color_actividad_item"
+        android:layout_width="5dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_green_light" />
+
+</LinearLayout>
