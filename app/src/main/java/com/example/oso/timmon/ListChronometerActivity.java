@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.oso.timmon.data.model.Actividad;
 
@@ -62,10 +63,6 @@ public class ListChronometerActivity extends AppCompatActivity {
 //                    Ocultar teclado
 //                    imm.hideSoftInputFromWindow(nombreActividad.getWindowToken(), 0);
                 }
-                imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-
-//                    Forzar nombreActividad mostrar el teclado
-                imm.showSoftInput(nombreActividad, InputMethodManager.SHOW_IMPLICIT);
                 sw = true;
             }
         });
@@ -82,6 +79,8 @@ public class ListChronometerActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+
     }
 
     private void revisarVista(ImageView img) {
@@ -96,7 +95,7 @@ public class ListChronometerActivity extends AppCompatActivity {
             sw = false;
             ly.setVisibility(View.INVISIBLE);
             btnNew.setVisibility(View.VISIBLE);
-        }else {
+        }else{
             super.onBackPressed();
         }
     }
