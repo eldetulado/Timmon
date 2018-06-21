@@ -11,8 +11,8 @@
     <string name="lorem">Lorem ipsum dolor sit amet consts</string>
 
     <string-array name="options">
-        <item>Mensual</item>
         <item>Hoy</item>
         <item>Semanal</item>
+        <item>Mensual</item>
     </string-array>
 </resources>

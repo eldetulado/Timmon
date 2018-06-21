@@ -27,6 +27,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/opensans"
             android:text="Estudiar Mongo"
+            android:layout_marginTop="3dp"
+            android:textSize="15sp"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@android:color/black" />
 
@@ -35,6 +37,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/opensanslight"
+            android:layout_marginBottom="3dp"
+            android:textSize="14sp"
             android:text="Ultima vez hace un dia"
             android:textAppearance="?android:textAppearanceSmall"
             android:textColor="@android:color/black" />
@@ -61,7 +65,7 @@
 
     <View
         android:id="@+id/color_actividad_item"
-        android:layout_width="5dp"
+        android:layout_width="3dp"
         android:layout_height="match_parent"
         android:background="@android:color/holo_green_light" />
 

@@ -49,6 +49,8 @@
             android:id="@+id/btnNewActivity"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:background="@drawable/bg_btn_sign_up"
+            android:textColor="@android:color/white"
             android:layout_height="wrap_content"
             android:text="Añadir"/>
     </LinearLayout>

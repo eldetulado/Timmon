@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.oso.timmon.data.model.Actividad;
@@ -27,7 +28,7 @@ public class ListChronometerActivity extends AppCompatActivity {
     private Button btnNew;
     private ImageButton btnAdicionarActividad;
     private LinearLayout ly;
-    private ImageView img;
+    private LinearLayout img;
     private ArrayList<Actividad> lista;
     private AdapterActividad adapter;
     @Override
@@ -83,7 +84,7 @@ public class ListChronometerActivity extends AppCompatActivity {
 
     }
 
-    private void revisarVista(ImageView img) {
+    private void revisarVista(LinearLayout img) {
         if (lista.size()>0) img.setVisibility(View.INVISIBLE);
         else img.setVisibility(View.VISIBLE);
     }
