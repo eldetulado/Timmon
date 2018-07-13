@@ -1,11 +1,17 @@
 package com.example.oso.timmon;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -17,8 +23,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.oso.timmon.data.model.Actividad;
+import com.example.oso.timmon.data.modelsql.Tarea;
+import com.example.oso.timmon.data.sqlite.DataBaseHelper;
+import com.example.oso.timmon.data.sqlite.Estructura.*;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class ListChronometerActivity extends AppCompatActivity {
 
@@ -31,6 +41,8 @@ public class ListChronometerActivity extends AppCompatActivity {
     private LinearLayout img;
     private ArrayList<Actividad> lista;
     private AdapterActividad adapter;
+
+    DataBaseHelper con;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +59,9 @@ public class ListChronometerActivity extends AppCompatActivity {
         adapter = new AdapterActividad(lista,this,R.layout.item_actividad);
         rv.setAdapter(adapter);
         revisarVista(img);
+        con=new DataBaseHelper(this);
+        consutarTarea();
+
 
 
         btnNew.setOnClickListener(new View.OnClickListener() {
@@ -71,16 +86,51 @@ public class ListChronometerActivity extends AppCompatActivity {
         btnAdicionarActividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                SQLiteDatabase db= con.getWritableDatabase();
+
+
                 String nombre = nombreActividad.getText().toString().trim();
-                Actividad a = new Actividad(nombre,15,"hoy",false,false, R.color.colorAccent);
+                ContentValues values = new ContentValues();
+                values.put(ColumnasTarea.NOMBRE, nombre);
+                values.put(ColumnasTarea.ID_CATEGORIA,1);
+
+                Long idResultado=db.insert(ColumnasTarea.TABLE_NAME,ColumnasTarea.ID, values);
+                Toast.makeText(v.getContext(), "id:"+idResultado, Toast.LENGTH_SHORT).show();
+
+                consutarTarea();
+                /*Actividad a = new Actividad(nombre,15,"hoy",false,false, R.color.colorAccent);
                 lista.add(a);
                 revisarVista(img);
                 adapter.notifyDataSetChanged();
                 nombreActividad.getText().clear();
-                onBackPressed();
+                onBackPressed();*/
             }
         });
 
+
+    }
+
+
+    private void consutarTarea(){
+        SQLiteDatabase db=con.getReadableDatabase();
+        Actividad t=new Actividad();
+        lista.clear();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+ ColumnasTarea.TABLE_NAME,null);
+        while (cursor.moveToNext()){
+            t=new Actividad();
+            //t.set(cursor.getInt(0));
+            t.setNombreActividad(cursor.getString(1));
+            t.setEsRutina(false);
+            //t.set(cursor.getInt(2));
+
+
+            lista.add(t);
+            revisarVista(img);
+            adapter.notifyDataSetChanged();
+            nombreActividad.getText().clear();
+        }
 
     }
 
@@ -100,4 +150,12 @@ public class ListChronometerActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+
+
+
+
+
+
+
 }

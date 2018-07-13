@@ -41,7 +41,7 @@
         android:layout_below="@id/spinner_options"
         android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="45dp"
         android:background="@color/colorStatusBar" />
 
     <LinearLayout
@@ -76,7 +76,7 @@
     <Button
         android:id="@+id/btnNew"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
         android:fontFamily="@font/opensanslight"
@@ -86,7 +86,8 @@
         android:textStyle="bold" />
     <LinearLayout
         android:id="@+id/container"
-        android:padding="5dp"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="6dp"
         android:background="@color/colorGray100"
         android:visibility="visible"
         android:layout_alignParentBottom="true"
@@ -98,23 +99,26 @@
             android:src="@drawable/ic_check_black_24dp"
             android:padding="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="35dp" />
 
         <EditText
             android:id="@+id/actividad"
-            android:hint="actividad"
+            android:hint="Actividad"
             android:background="@drawable/in_white"
             android:inputType="text"
+            android:paddingHorizontal="12dp"
             android:maxLines="1"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
         <ImageButton
             android:id="@+id/btn_adicionar_actividad"
-            android:src="@drawable/ic_check_black_24dp"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/bg_btn_sign_up"
+            android:padding="13dp"
+            android:src="@drawable/ic_check_white_24dp" />
     </LinearLayout>
 </RelativeLayout>

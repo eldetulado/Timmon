@@ -44,6 +44,29 @@ public class Actividad {
         return esRutina;
     }
 
+    public void setNombreActividad(String nombreActividad) {
+        this.nombreActividad = nombreActividad;
+    }
+
+    public void setTiempoActividad(int tiempoActividad) {
+        this.tiempoActividad = tiempoActividad;
+    }
+
+    public void setTiempoUltimaVez(String tiempoUltimaVez) {
+        this.tiempoUltimaVez = tiempoUltimaVez;
+    }
+
+    public void setEsRutina(Boolean esRutina) {
+        this.esRutina = esRutina;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    public Actividad() {
+    }
+
     public int getColor() {
         return color;
     }
