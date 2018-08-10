@@ -7,6 +7,7 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,12 +38,15 @@ public class ListChronometerActivity extends AppCompatActivity {
     private EditText nombreActividad;
     private Button btnNew;
     private ImageButton btnAdicionarActividad;
+    private ImageView imgCover;
     private LinearLayout ly;
     private LinearLayout img;
     private ArrayList<Actividad> lista;
     private AdapterActividad adapter;
+    private ViewPager pg;
 
     DataBaseHelper con;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,16 +56,19 @@ public class ListChronometerActivity extends AppCompatActivity {
         ly = findViewById(R.id.container);
         nombreActividad = findViewById(R.id.actividad);
         img = findViewById(R.id.warning);
+        imgCover = findViewById(R.id.img_cover_page);
         btnNew = findViewById(R.id.btnNew);
         btnAdicionarActividad = findViewById(R.id.btn_adicionar_actividad);
+        pg = findViewById(R.id.pager);
+        final PagerAdapter pAdapter = new PagerAdapter(getSupportFragmentManager());
+        pg.setAdapter(pAdapter);
         RecyclerView rv = findViewById(R.id.lista_actividades);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new AdapterActividad(lista,this,R.layout.item_actividad);
+        adapter = new AdapterActividad(lista, this, R.layout.item_actividad);
         rv.setAdapter(adapter);
         revisarVista(img);
-        con=new DataBaseHelper(this);
+        con = new DataBaseHelper(this);
         consutarTarea();
-
 
 
         btnNew.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +77,7 @@ public class ListChronometerActivity extends AppCompatActivity {
                 btnNew.setVisibility(View.INVISIBLE);
                 ly.setVisibility(View.VISIBLE);
                 nombreActividad.requestFocus();
-                if (nombreActividad.isFocused()){
+                if (nombreActividad.isFocused()) {
                     imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
 //                    Forzar nombreActividad mostrar el teclado
@@ -88,16 +95,16 @@ public class ListChronometerActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                SQLiteDatabase db= con.getWritableDatabase();
+                SQLiteDatabase db = con.getWritableDatabase();
 
 
                 String nombre = nombreActividad.getText().toString().trim();
                 ContentValues values = new ContentValues();
                 values.put(ColumnasTarea.NOMBRE, nombre);
-                values.put(ColumnasTarea.ID_CATEGORIA,1);
+                values.put(ColumnasTarea.ID_CATEGORIA, 1);
 
-                Long idResultado=db.insert(ColumnasTarea.TABLE_NAME,ColumnasTarea.ID, values);
-                Toast.makeText(v.getContext(), "id:"+idResultado, Toast.LENGTH_SHORT).show();
+                Long idResultado = db.insert(ColumnasTarea.TABLE_NAME, ColumnasTarea.ID, values);
+                Toast.makeText(v.getContext(), "id:" + idResultado, Toast.LENGTH_SHORT).show();
 
                 consutarTarea();
                 /*Actividad a = new Actividad(nombre,15,"hoy",false,false, R.color.colorAccent);
@@ -109,17 +116,23 @@ public class ListChronometerActivity extends AppCompatActivity {
             }
         });
 
+        adapter.setOnChangeFragment(new AdapterActividad.OnChangeFragment() {
+            @Override
+            public void changeFragment() {
+                pg.setCurrentItem(1);
+            }
+        });
 
     }
 
 
-    private void consutarTarea(){
-        SQLiteDatabase db=con.getReadableDatabase();
-        Actividad t=new Actividad();
+    private void consutarTarea() {
+        SQLiteDatabase db = con.getReadableDatabase();
+        Actividad t = new Actividad();
         lista.clear();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+ ColumnasTarea.TABLE_NAME,null);
-        while (cursor.moveToNext()){
-            t=new Actividad();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + ColumnasTarea.TABLE_NAME, null);
+        while (cursor.moveToNext()) {
+            t = new Actividad();
             //t.set(cursor.getInt(0));
             t.setNombreActividad(cursor.getString(1));
             t.setEsRutina(false);
@@ -135,27 +148,28 @@ public class ListChronometerActivity extends AppCompatActivity {
     }
 
     private void revisarVista(LinearLayout img) {
-        if (lista.size()>0) img.setVisibility(View.INVISIBLE);
-        else img.setVisibility(View.VISIBLE);
+        if (lista.size() > 0) {
+            img.setVisibility(View.INVISIBLE);
+            imgCover.setVisibility(View.INVISIBLE);
+            pg.setVisibility(View.VISIBLE);
+        } else {
+            img.setVisibility(View.VISIBLE);
+            imgCover.setVisibility(View.VISIBLE);
+            pg.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public void onBackPressed() {
-        if (sw){
+        if (sw) {
             imm.hideSoftInputFromWindow(nombreActividad.getWindowToken(), 0);
             sw = false;
             ly.setVisibility(View.INVISIBLE);
             btnNew.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
-
-
-
-
-
-
 
 
 }

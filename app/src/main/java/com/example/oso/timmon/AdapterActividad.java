@@ -22,6 +22,7 @@ public class AdapterActividad extends RecyclerView.Adapter<AdapterActividad.View
     private ArrayList<Actividad> lista;
     private Context context;
     private int layout;
+    private OnChangeFragment onChangeFragment;
 
     public AdapterActividad(ArrayList<Actividad> lista, Context context, int layout) {
         this.lista = lista;
@@ -32,29 +33,35 @@ public class AdapterActividad extends RecyclerView.Adapter<AdapterActividad.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(layout,parent,false);
+        View view = LayoutInflater.from(context).inflate(layout, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final Actividad temp = lista.get(position);
-        if (temp.getEsRutina()) holder.rutina.setVisibility(View.VISIBLE);
-        else holder.rutina.setVisibility(View.INVISIBLE);
-
+        if (temp.getEsRutina())
+            holder.rutina.setVisibility(View.VISIBLE);
+        else
+            holder.rutina.setVisibility(View.INVISIBLE);
+        if (temp.getEstadoActividad())
+            holder.imgPlayPause.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_pause_circle));
+        else
+            holder.imgPlayPause.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_play_circle));
         holder.nombre.setText(temp.getNombreActividad());
         holder.imgPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Drawable d;
-                if (temp.getEstadoActividad()){
-                    d = ContextCompat.getDrawable(context,R.drawable.ic_pause_circle);
+                if (temp.getEstadoActividad()) {
+                    holder.imgPlayPause.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_pause_circle));
                     temp.setEstadoActividad(false);
-                }else{
-                    d = ContextCompat.getDrawable(context,R.drawable.ic_play_circle);
+                } else {
+                    holder.imgPlayPause.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_play_circle));
                     temp.setEstadoActividad(true);
+                    if (onChangeFragment != null){
+                        onChangeFragment.changeFragment();
+                    }
                 }
-                holder.imgPlayPause.setImageDrawable(d);
                 notifyItemChanged(holder.getAdapterPosition());
             }
         });
@@ -65,6 +72,10 @@ public class AdapterActividad extends RecyclerView.Adapter<AdapterActividad.View
                 Toast.makeText(context, "en desarrollo", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void setOnChangeFragment(OnChangeFragment onChangeFragment){
+        this.onChangeFragment = onChangeFragment;
     }
 
     @Override
@@ -89,5 +100,9 @@ public class AdapterActividad extends RecyclerView.Adapter<AdapterActividad.View
             rutina = itemView.findViewById(R.id.icon_rutina_item);
             color = itemView.findViewById(R.id.color_actividad_item);
         }
+    }
+
+    interface OnChangeFragment{
+        void changeFragment();
     }
 }

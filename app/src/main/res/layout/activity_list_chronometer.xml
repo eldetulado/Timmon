@@ -10,8 +10,15 @@
         android:id="@+id/img_cover_page"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:src="@drawable/banner_test"
-        android:background="@android:color/white"/>
+        android:visibility="invisible"
+        android:background="@android:color/white"
+        android:src="@drawable/banner_test" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:visibility="visible" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,27 +38,26 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@id/img_cover_page"
         android:entries="@array/options"
-        android:textAlignment="textEnd"
-        android:padding="15dp" />
+        android:padding="15dp"
+        android:textAlignment="textEnd" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lista_actividades"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/spinner_options"
+        android:layout_marginBottom="45dp"
         android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"
-        android:layout_marginBottom="45dp"
         android:background="@color/colorStatusBar" />
 
     <LinearLayout
         android:id="@+id/warning"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
         android:layout_below="@id/spinner_options"
-        >
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <ImageView
 
@@ -62,12 +68,12 @@
 
         <TextView
             android:layout_width="160dp"
-            android:textAlignment="center"
-            android:layout_marginTop="-10dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
             android:fontFamily="@font/opensanslight"
             android:padding="15dp"
             android:text="Aun no tienes actividades"
+            android:textAlignment="center"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@color/colorGray" />
     </LinearLayout>
@@ -84,33 +90,34 @@
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
+
     <LinearLayout
         android:id="@+id/container"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="6dp"
-        android:background="@color/colorGray100"
-        android:visibility="visible"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorGray100"
+        android:orientation="horizontal"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="6dp"
+        android:visibility="visible">
 
         <ImageButton
-            android:src="@drawable/ic_check_black_24dp"
-            android:padding="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="35dp" />
+            android:layout_height="35dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_check_black_24dp" />
 
         <EditText
             android:id="@+id/actividad"
-            android:hint="Actividad"
-            android:background="@drawable/in_white"
-            android:inputType="text"
-            android:paddingHorizontal="12dp"
-            android:maxLines="1"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_height="match_parent" />
+            android:background="@drawable/in_white"
+            android:hint="Actividad"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingHorizontal="12dp" />
 
         <ImageButton
             android:id="@+id/btn_adicionar_actividad"

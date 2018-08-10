@@ -6,7 +6,7 @@ public class Actividad {
     private String nombreActividad;
     private int tiempoActividad;
     private String tiempoUltimaVez;
-    private Boolean estadoActividad;
+    private Boolean estadoActividad = false;
     private Boolean esRutina;
     private int color;
 
