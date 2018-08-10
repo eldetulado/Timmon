@@ -1,7 +1,9 @@
 package com.example.oso.timmon;
 
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,12 +15,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.oso.timmon.data.model.Actividad;
+
 public class TimeChronometerFragment extends Fragment {
     private ImageButton btnPause;
     private ImageButton btnStop;
     private ImageButton btnBackSlider;
 
-    private Chronometer chronometer;
+    private static Chronometer chronometer;
 
     public TimeChronometerFragment() {
         // Required empty public constructor
@@ -33,6 +37,13 @@ public class TimeChronometerFragment extends Fragment {
         btnBackSlider = rootView.findViewById(R.id.btnBackSlider);
 
         chronometer = rootView.findViewById(R.id.timeChronometer);
+
+        chronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometerChanged) {
+                chronometer = chronometerChanged;
+            }
+        });
 
         btnPause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +66,20 @@ public class TimeChronometerFragment extends Fragment {
             }
         });
         return rootView;
+    }
+
+    private static boolean isStart=false;
+
+
+    public static void startCrono(Context c, Actividad a){
+        if(isStart){
+            chronometer.stop();
+            isStart = false;
+        }else{
+            chronometer.setBase(SystemClock.elapsedRealtime());
+            chronometer.start();
+            isStart = true;
+        }
     }
 
 }

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -38,7 +39,7 @@ public class AdapterActividad extends RecyclerView.Adapter<AdapterActividad.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final Actividad temp = lista.get(position);
         if (temp.getEsRutina())
             holder.rutina.setVisibility(View.VISIBLE);
@@ -52,6 +53,7 @@ public class AdapterActividad extends RecyclerView.Adapter<AdapterActividad.View
         holder.imgPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                TimeChronometerFragment.startCrono(v.getContext(), temp);
                 if (temp.getEstadoActividad()) {
                     holder.imgPlayPause.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_pause_circle));
                     temp.setEstadoActividad(false);

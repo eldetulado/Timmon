@@ -3,6 +3,7 @@ package com.example.oso.timmon.data.model;
 import android.graphics.Color;
 
 public class Actividad {
+    private int id;
     private String nombreActividad;
     private int tiempoActividad;
     private String tiempoUltimaVez;
@@ -10,8 +11,17 @@ public class Actividad {
     private Boolean esRutina;
     private int color;
 
-    public Actividad(String nombreActividad, int tiempoActividad, String tiempoUltimaVez,
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Actividad(int id, String nombreActividad, int tiempoActividad, String tiempoUltimaVez,
                      Boolean estadoActividad, Boolean esRutina, int color) {
+        this.id = id;
         this.nombreActividad = nombreActividad;
         this.tiempoActividad = tiempoActividad;
         this.tiempoUltimaVez = tiempoUltimaVez;
